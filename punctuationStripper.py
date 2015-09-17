@@ -5,9 +5,11 @@ __author__ = 'rctatman'
 import re, glob, os
 
 os.chdir("./")
+print("The following files had their puncutation removed:")
 for file in glob.glob("*.txt"):
     print(file)
     with open(file, 'r+') as f:
         s = f.read()
-        s = re.sub('[^0-9a-zA-Z\s.\']+','',s)
+        s = re.sub('[^0-9a-zA-Z\s\.]+','',s)
+        f.truncate(0)
         f.write(s)
